@@ -23,6 +23,9 @@
       "react-app/jest"
     ]
   },
+  "emmet.includeLanguages": {
+    "postcss": "css"
+  },
   "browserslist": {
     "production": [
       ">0.2%",
