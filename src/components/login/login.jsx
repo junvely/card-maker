@@ -4,7 +4,7 @@ import styles from "./login.module.css";
 const Login = ({ authService }) => {
   const onLogin = (event) => {
     authService //
-      .login("Google")
+      .login(event.currentTarget.textContent)
       .then(console.log);
   };
 
@@ -23,9 +23,11 @@ const Login = ({ authService }) => {
         <div className={styles.buttons}>
           {/* 적용 */}
           <button className={styles.button} onClick={onLogin}>
-            Goggle 로그인
+            Google
           </button>
-          <button className={styles.button}>Face Book 로그인</button>
+          <button className={styles.button} onClick={onLogin}>
+            GitHub
+          </button>
         </div>
       </div>
     </div>
