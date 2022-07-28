@@ -3,8 +3,9 @@ import styles from "./login.module.css";
 
 const Login = ({ authService }) => {
   const onLogin = (event) => {
+    console.dir(event.currentTarget);
     authService //
-      .login(event.currentTarget.textContent)
+      .login(event.currentTarget.id)
       .then(console.log);
   };
 
@@ -22,11 +23,14 @@ const Login = ({ authService }) => {
         <p className={styles.info}>Login and get started!</p>
         <div className={styles.buttons}>
           {/* 적용 */}
-          <button className={styles.button} onClick={onLogin}>
-            Google
+          <button className={styles.button} onClick={onLogin} id="Google">
+            Google 로그인
           </button>
-          <button className={styles.button} onClick={onLogin}>
-            GitHub
+          <button className={styles.button} onClick={onLogin} id="GitHub">
+            GitHub 로그인
+          </button>
+          <button className={styles.button} onClick={onLogin} id="faceBook">
+            faceBook 로그인
           </button>
         </div>
       </div>

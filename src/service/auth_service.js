@@ -3,6 +3,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   GithubAuthProvider,
+  FacebookAuthProvider,
 } from "firebase/auth";
 
 class AuthService {
@@ -14,6 +15,7 @@ class AuthService {
     this.firebaseAuth = getAuth();
     this.googleProvider = new GoogleAuthProvider();
     this.githubProvider = new GithubAuthProvider();
+    this.faceBookProvider = new FacebookAuthProvider();
   }
   login(providerName) {
     const authProvider = this.getProvider(providerName);
@@ -25,6 +27,8 @@ class AuthService {
         return this.googleProvider;
       case "GitHub":
         return this.githubProvider;
+      case "faceBook":
+        return this.faceBookProvider;
       default:
         throw new Error(`not supported provider`);
     }

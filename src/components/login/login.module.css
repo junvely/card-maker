@@ -67,8 +67,8 @@
 .button::before {
   position: absolute;
   content: "";
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   top: 50%;
   left: 20%;
   transform: translateY(-50%);
@@ -79,5 +79,9 @@
 }
 
 .button:nth-child(2)::before {
+  background: url(/public/img/github.png) no-repeat 50% / cover;
+}
+
+.button:nth-child(3)::before {
   background: url(/public/img/facebook.png) no-repeat 50% / cover;
 }
