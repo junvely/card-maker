@@ -1,0 +1,9 @@
+@value makerColorful from "./common/colors.css";
+
+.app {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: makerColorful;
+}

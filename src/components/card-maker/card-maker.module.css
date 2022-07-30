@@ -1,0 +1,27 @@
+@value makerWhite from "../../common/colors.css";
+@value makerBlue from "../../common/colors.css";
+
+.sections {
+  width: 95%;
+  height: auto;
+  max-width: 1280px;
+  background-color: makerWhite;
+  position: relative;
+}
+
+.logout {
+  position: absolute;
+  top: -3em;
+  right: 3em;
+  padding: 0.5em;
+  color: makerWhite;
+  background-color: makerBlue;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.logout:hover {
+  background-color: makerWhite;
+  color: makerBlue;
+}

@@ -1,22 +1,27 @@
-// import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useState } from "react";
-import "./app.css";
 import Login from "./components/login/login";
-// import CardMaker from "./components/login/card-maker/card-maker";
+import styles from "./app.module.css";
+import CardMaker from "./components/card-maker/card-maker";
 
 function App({ authService }) {
-  const [userData, setUserData] = useState(null);
+  const onLogout = () => {
+    console.log("Logout");
+  };
 
   return (
-    <>
-      {/* <BrowserRouter>
+    <div className={styles.app}>
+      <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/card_maker" element={<CardMaker />} />
+          <Route path="/" element={<Login authService={authService} />} />
+          <Route
+            path="/card-maker"
+            element={<CardMaker onLogout={onLogout} />}
+          />
         </Routes>
-      </BrowserRouter> */}
-      <Login authService={authService}></Login>
-    </>
+      </BrowserRouter>
+      {/* <Login authService={authService}></Login> */}
+    </div>
   );
 }
 

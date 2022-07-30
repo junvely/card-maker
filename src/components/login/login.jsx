@@ -3,7 +3,6 @@ import styles from "./login.module.css";
 
 const Login = ({ authService }) => {
   const onLogin = (event) => {
-    console.dir(event.currentTarget);
     authService //
       .login(event.currentTarget.id)
       .then(console.log);
