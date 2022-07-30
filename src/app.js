@@ -1,26 +1,38 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { useState } from "react";
+import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Login from "./components/login/login";
 import styles from "./app.module.css";
 import CardMaker from "./components/card-maker/card-maker";
 
 function App({ authService }) {
+  const [userData, setUserData] = useState(0);
+
+  const getUserData = (data) => {
+    setUserData(data);
+    console.log(data.displayName);
+  };
   const onLogout = () => {
     console.log("Logout");
   };
 
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (userData) {
+      navigate("/card-maker");
+    }
+  }, [userData]);
+
   return (
     <div className={styles.app}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Login authService={authService} />} />
-          <Route
-            path="/card-maker"
-            element={<CardMaker onLogout={onLogout} />}
-          />
-        </Routes>
-      </BrowserRouter>
-      {/* <Login authService={authService}></Login> */}
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Login authService={authService} getUserData={getUserData} />
+          }
+        />
+        <Route path="/card-maker" element={<CardMaker onLogout={onLogout} />} />
+      </Routes>
     </div>
   );
 }

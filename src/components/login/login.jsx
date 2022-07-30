@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "./login.module.css";
 
-const Login = ({ authService }) => {
+const Login = ({ authService, getUserData }) => {
   const onLogin = (event) => {
     authService //
       .login(event.currentTarget.id)
-      .then(console.log);
+      .then((data) => getUserData(data.user));
   };
 
   return (
