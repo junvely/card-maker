@@ -1,7 +1,7 @@
-import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Login from "./components/login/login";
-import styles from "./app.module.css";
+import styles from "./app.css";
 import CardMaker from "./components/card-maker/card-maker";
 
 function App({ authService }) {

@@ -1,12 +1,20 @@
 @value makerShadow from "../../common/colors.css";
 @value makerColorful from "../../common/colors.css";
 
-.loginCon {
+.loginBg {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: makerColorful;
+}
+
+.login {
   width: 70%;
   max-width: 1000px;
   display: flex;
   overflow: hidden;
-  margin: 0 auto;
   border-radius: 5px;
   box-shadow: makerShadow;
 }
@@ -25,7 +33,7 @@
 .titleCon {
   width: 50%;
   text-align: center;
-  padding: 10%;
+  padding: 5% 10%;
   background-color: #f0f4f5;
 }
 
@@ -36,10 +44,6 @@
   padding-left: 10%;
   display: block;
   color: rgba(49, 1, 126, 0.938);
-}
-
-.title {
-  font-size: 3rem;
 }
 
 .info {
@@ -56,7 +60,7 @@
   width: 100%;
   line-height: 2.5rem;
   background: makerColorful;
-  margin-bottom: 1rem;
+  margin-bottom: 1em;
   color: #fff;
   box-shadow: makerShadow;
   border-radius: 10px;
