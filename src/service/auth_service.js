@@ -4,6 +4,7 @@ import {
   GoogleAuthProvider,
   GithubAuthProvider,
   FacebookAuthProvider,
+  onAuthStateChanged,
 } from "firebase/auth";
 
 class AuthService {
@@ -20,6 +21,12 @@ class AuthService {
 
   logout() {
     this.firebaseAuth.signOut();
+  }
+
+  onAuthChange(userChange) {
+    onAuthStateChanged(this.firebaseAuth, (user) => {
+      userChange(user);
+    });
   }
 
   getProvider(providerName) {

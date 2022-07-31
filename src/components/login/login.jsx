@@ -1,13 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./login.module.css";
 import Header from "../../common/header/header";
+import { useNavigate } from "react-router-dom";
 
 const Login = ({ authService, getUserData }) => {
+  const navigate = useNavigate();
+  const gotoMaker = (userId) => {
+    navigate({
+      pathname: "/card-maker",
+      state: { id: userId },
+    });
+  };
+
   const onLogin = (event) => {
     authService //
       .login(event.currentTarget.id)
-      .then((data) => getUserData(data.user));
+      .then((data) => {
+        getUserData(data.user);
+        gotoMaker(data.user.uid);
+      });
   };
+
+  useEffect(() => {
+    authService.onAuthChange((user) => {
+      user && gotoMaker(user.uid); // 콜백자체를 인자로 전달
+    });
+  });
 
   return (
     <div className={styles.loginBg}>
