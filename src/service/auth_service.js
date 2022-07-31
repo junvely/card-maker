@@ -7,10 +7,6 @@ import {
 } from "firebase/auth";
 
 class AuthService {
-  // login(providerName) {
-  //   const authProvider = new firebase.auth[`${providerName}AuthProvider`]();
-  //   return firebase.auth().signInWithPopup(authProvider);
-  // }
   constructor() {
     this.firebaseAuth = getAuth();
     this.googleProvider = new GoogleAuthProvider();
@@ -21,6 +17,11 @@ class AuthService {
     const authProvider = this.getProvider(providerName);
     return signInWithPopup(this.firebaseAuth, authProvider);
   }
+
+  logout() {
+    this.firebaseAuth.signOut();
+  }
+
   getProvider(providerName) {
     switch (providerName) {
       case "Google":

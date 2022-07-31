@@ -2,16 +2,20 @@ import React from "react";
 import styles from "./card-maker.module.css";
 import Header from "../../common/header/header";
 
-const CardMaker = ({ onLogout }) => {
+const CardMaker = ({ authService, userData, resetUserData }) => {
   return (
     <section className={styles.sections}>
       <Header></Header>
-      카드메이커 화면입니다.
-      {onLogout && (
-        <button className={styles.logout} onClick={onLogout}>
-          Logout
-        </button>
-      )}
+      {userData && <span>{`${userData.displayName}님 환영합니다.`}</span>}
+      <button
+        className={styles.logout}
+        onClick={() => {
+          authService.logout();
+          resetUserData();
+        }}
+      >
+        Logout
+      </button>
     </section>
   );
 };

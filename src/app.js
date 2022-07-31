@@ -5,20 +5,22 @@ import styles from "./app.css";
 import CardMaker from "./components/card-maker/card-maker";
 
 function App({ authService }) {
-  const [userData, setUserData] = useState(0);
+  const [userData, setUserData] = useState(null);
 
   const getUserData = (data) => {
     setUserData(data);
-    console.log(data.displayName);
   };
-  const onLogout = () => {
-    console.log("Logout");
+
+  const resetUserData = () => {
+    setUserData(null);
   };
 
   const navigate = useNavigate();
   useEffect(() => {
     if (userData) {
       navigate("/card-maker");
+    } else {
+      navigate("/");
     }
   }, [userData]);
 
@@ -31,7 +33,16 @@ function App({ authService }) {
             <Login authService={authService} getUserData={getUserData} />
           }
         />
-        <Route path="/card-maker" element={<CardMaker onLogout={onLogout} />} />
+        <Route
+          path="/card-maker"
+          element={
+            <CardMaker
+              authService={authService}
+              userData={userData}
+              resetUserData={resetUserData}
+            />
+          }
+        />
       </Routes>
     </div>
   );
