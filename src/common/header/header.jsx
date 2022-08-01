@@ -1,11 +1,15 @@
 import React from "react";
 import styles from "./header.module.css";
 
-const Header = (props) => (
-  <header>
-    <h2 className={styles.title}>Business Card Maker</h2>
-    <img className={styles.img} src="./img/logo.png" alt="logo" />
-  </header>
-);
+const Header = ({ color }) => {
+  const colorChange = color === "white" && styles.colorWhite;
+
+  return (
+    <header>
+      <h1 className={`${styles.title} ${colorChange}`}>Business Card Maker</h1>
+      <img className={styles.img} src="./img/logo.png" alt="logo" />
+    </header>
+  );
+};
 
 export default Header;

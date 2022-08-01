@@ -16,3 +16,7 @@ header {
   display: inline-block;
   text-align: center;
 }
+.colorWhite {
+  color: white;
+  font-size: 2rem;
+}
