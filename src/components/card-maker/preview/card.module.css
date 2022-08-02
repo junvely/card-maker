@@ -1,0 +1,32 @@
+.card {
+  padding: 2%;
+  margin-bottom: 1%;
+  display: flex;
+  background-color: aliceblue;
+  border-radius: 10px;
+}
+
+.imgCon {
+  width: 20%;
+  border: 1px solid;
+}
+
+.imgCon img {
+  width: 100%;
+  display: block;
+}
+
+.userInfo {
+  width: 60%;
+  padding: 0 2%;
+}
+
+.userInfo p {
+  padding: 1%;
+  font-size: 0.9rem;
+}
+
+.name {
+  padding: 1%;
+  font-size: 1rem;
+}

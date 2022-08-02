@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./card-maker.module.css";
 import Header from "../../common/header/header";
 import { useNavigate } from "react-router-dom";
-import Editor from "./editor";
-import Preview from "./preview";
+import Maker from "./maker/maker";
+import Preview from "./preview/preview";
 
 const CardMaker = ({ authService, userData }) => {
   const navigate = useNavigate();
@@ -20,6 +20,23 @@ const CardMaker = ({ authService, userData }) => {
     });
   });
 
+  const [userInfo, setUserInfo] = useState([
+    {
+      name: "Lee Jun Young",
+      company: "Junyoung Company",
+      job: "freelancer",
+      email: "junvely97@gmail.com",
+      memo: "hello I'm Junyoung:)",
+    },
+    {
+      name: "Son kwan sik",
+      company: "Samsung Electronicsdfds",
+      job: "Software Engineer",
+      email: "kwansik97@gmail.com",
+      memo: "hello I'm kwansik:)",
+    },
+  ]);
+
   return (
     <section className={styles.cardMakerCon}>
       <Header color={"white"}></Header>
@@ -32,8 +49,8 @@ const CardMaker = ({ authService, userData }) => {
             className={styles.greeting}
           >{`${userData.displayName}님 환영합니다.`}</span>
         )}
-        <Editor></Editor>
-        <Preview></Preview>
+        <Maker userInfo={userInfo}></Maker>
+        <Preview userInfo={userInfo}></Preview>
       </div>
     </section>
   );
