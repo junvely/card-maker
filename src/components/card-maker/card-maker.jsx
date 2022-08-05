@@ -35,6 +35,7 @@ const CardMaker = ({ authService, userData }) => {
       email: "kwansik97@gmail.com",
       memo: "hello I'm kwansik:)",
     },
+    {},
   ]);
 
   return (
@@ -50,7 +51,7 @@ const CardMaker = ({ authService, userData }) => {
           >{`${userData.displayName}님 환영합니다.`}</span>
         )}
         <Maker userInfo={userInfo}></Maker>
-        <Preview userInfo={userInfo}></Preview>
+        <Preview userInfo={userInfo.filter((user) => user.name)}></Preview>
       </div>
     </section>
   );
