@@ -1,0 +1,14 @@
+@value makerWhite, makerBlue  from "../../../../../common/colors.css";
+
+.imgFileInput {
+  width: 50%;
+  padding: 0.5em 0.7em;
+  cursor: pointer;
+  transition: all 0.3s;
+  background-color: makerWhite;
+}
+
+.imgFileInput:hover {
+  background-color: makerBlue;
+  color: makerWhite;
+}

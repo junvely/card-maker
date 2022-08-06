@@ -7,7 +7,7 @@ const Card = ({ user }) => {
   const url = fileURL || DEFAULT_IMAGE;
 
   return (
-    <li className={`${styles.card} `}>
+    <li className={`${styles.card} ${bgChange(theme)}`}>
       <div className={styles.userImgCon}>
         <img src={url} alt="userImg" />
       </div>
@@ -21,5 +21,20 @@ const Card = ({ user }) => {
     </li>
   );
 };
+
+function bgChange(theme) {
+  switch (theme) {
+    case "purple":
+      return styles.purple;
+    case "pink":
+      return styles.pink;
+    case "blue":
+      return styles.blue;
+    case "dark":
+      return styles.dark;
+    default:
+      throw new Error(`unknown theme: ${theme}`);
+  }
+}
 
 export default Card;

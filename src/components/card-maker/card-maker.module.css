@@ -1,27 +1,7 @@
-@value makerWhite from "../../common/colors.css";
-@value makerBlue from "../../common/colors.css";
-
 .cardMakerCon {
   width: 100%;
   height: 100vh;
   background: url(../../../public/img/city.jpg) no-repeat 50% / cover;
-}
-
-.logout {
-  position: absolute;
-  top: 2.5em;
-  right: 3em;
-  padding: 0.5em 0.7em;
-  color: makerWhite;
-  background-color: makerBlue;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.logout:hover {
-  background-color: makerWhite;
-  color: makerBlue;
 }
 
 .sections {

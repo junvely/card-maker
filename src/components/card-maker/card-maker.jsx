@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styles from "./card-maker.module.css";
-import Header from "../../common/header/header";
+import Header from "../header/header";
 import { useNavigate } from "react-router-dom";
 import Maker from "./maker/maker";
 import Preview from "./preview/preview";
+import Button from "../button/button";
 
 const CardMaker = ({ authService, userData }) => {
   const [userInfo, setUserInfo] = useState([
@@ -47,9 +48,7 @@ const CardMaker = ({ authService, userData }) => {
   return (
     <section className={styles.cardMakerCon}>
       <Header color={"white"}></Header>
-      <button className={styles.logout} onClick={onLogout}>
-        Logout
-      </button>
+      <Button name={"Logout"} onClick={onLogout}></Button>
       <div className={styles.sections}>
         {userData && (
           <span

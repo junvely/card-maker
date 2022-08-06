@@ -1,6 +1,7 @@
+@value makerLightGrey from "../../../common/colors.css";
+
 .maker {
   width: 50%;
-  /* background-color: rgba(240, 248, 255, 0.256); */
 }
 
 .cards {

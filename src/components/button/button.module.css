@@ -1,0 +1,36 @@
+@value makerWhite, makerBlue  from "../../common/colors.css";
+
+.button {
+  padding: 0.5em 0.7em;
+  cursor: pointer;
+  transition: all 0.3s;
+  background-color: makerWhite;
+}
+
+.button:hover {
+  background-color: makerBlue;
+  color: makerWhite;
+}
+
+.logout {
+  position: absolute;
+  top: 2.5em;
+  right: 3em;
+  border-radius: 30px;
+  color: makerWhite;
+  background-color: makerBlue;
+}
+
+.logout:hover {
+  background-color: makerWhite;
+  color: makerBlue;
+}
+
+.delete {
+  width: 50%;
+  background-color: #ccc;
+}
+
+.delete:hover {
+  background-color: #222;
+}
