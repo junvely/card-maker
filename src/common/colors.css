@@ -16,8 +16,9 @@
 
 @value makerShadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 
-@value makerColorful: linear-gradient(to right, #4776e6, #8e54e9);
-@value makerColorful: linear-gradient(to right, #4e54c8, #8f94fb);
 @value makerColorful: linear-gradient(to right, #b993d6, #8ca6db);
+@value makerColorfulPink: linear-gradient(to right,  #f2709c, #ff9472);
+@value makerColorfulBlue: linear-gradient(to right,  #6190e8, #a7bfe8);
+@value makerColorfulDark: linear-gradient(to right, #642b73, #c6426e);
 
 @value makerWheat: wheat;

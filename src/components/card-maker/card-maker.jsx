@@ -15,6 +15,7 @@ const CardMaker = ({ authService, userData }) => {
       email: "junvely97@gmail.com",
       message: "hello I'm Junyoung:)",
       fileURL: null,
+      theme: "pink",
     },
     {
       id: "2",
@@ -24,6 +25,7 @@ const CardMaker = ({ authService, userData }) => {
       email: "kwansik97@gmail.com",
       message: "hello I'm kwansik:)",
       fileURL: null,
+      theme: "blue",
     },
     {},
   ]);

@@ -8,7 +8,7 @@ const Preview = ({ users }) => {
       <h2>Card Preview</h2>
       <ul className={styles.cards}>
         {users.map((user) => (
-          <Card user={user}></Card>
+          <Card user={user} key={user.id}></Card>
         ))}
       </ul>
     </section>

@@ -2,7 +2,7 @@
 @value makerBlue from "../../../../common/colors.css";
 
 .editor {
-  margin: 2% 0;
+  margin-bottom: 2%;
 }
 
 .editorForm input {

@@ -19,7 +19,13 @@ code {
   margin: 0;
   box-sizing: border-box;
 }
+
 button {
   background-color: transparent;
   border: none;
+}
+
+ul,
+li {
+  list-style: none;
 }

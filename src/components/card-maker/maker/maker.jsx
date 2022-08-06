@@ -8,7 +8,7 @@ const Maker = ({ users }) => {
       <h2>Card Maker</h2>
       <ul className={styles.cards}>
         {users.map((user) => (
-          <Editor user={user}></Editor>
+          <Editor user={user} key={user.id}></Editor>
         ))}
       </ul>
     </section>
