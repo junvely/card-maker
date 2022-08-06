@@ -1,16 +1,16 @@
 import React from "react";
 import styles from "./maker.module.css";
-import Editor from "./editor";
+import Editor from "./editor/editor";
 
-const Maker = ({ userInfo }) => {
+const Maker = ({ users }) => {
   return (
     <section className={styles.maker}>
       <h2>Card Maker</h2>
-      <div className={styles.cards}>
-        {userInfo.map((user) => (
+      <ul className={styles.cards}>
+        {users.map((user) => (
           <Editor user={user}></Editor>
         ))}
-      </div>
+      </ul>
     </section>
   );
 };

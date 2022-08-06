@@ -6,6 +6,28 @@ import Maker from "./maker/maker";
 import Preview from "./preview/preview";
 
 const CardMaker = ({ authService, userData }) => {
+  const [userInfo, setUserInfo] = useState([
+    {
+      id: "1",
+      name: "Lee Jun Young",
+      company: "Junyoung Company",
+      job: "freelancer",
+      email: "junvely97@gmail.com",
+      message: "hello I'm Junyoung:)",
+      fileURL: null,
+    },
+    {
+      id: "2",
+      name: "Son kwan sik",
+      company: "Samsung Electronicsdfds",
+      job: "Software Engineer",
+      email: "kwansik97@gmail.com",
+      message: "hello I'm kwansik:)",
+      fileURL: null,
+    },
+    {},
+  ]);
+
   const navigate = useNavigate();
 
   const onLogout = () => {
@@ -20,24 +42,6 @@ const CardMaker = ({ authService, userData }) => {
     });
   });
 
-  const [userInfo, setUserInfo] = useState([
-    {
-      name: "Lee Jun Young",
-      company: "Junyoung Company",
-      job: "freelancer",
-      email: "junvely97@gmail.com",
-      memo: "hello I'm Junyoung:)",
-    },
-    {
-      name: "Son kwan sik",
-      company: "Samsung Electronicsdfds",
-      job: "Software Engineer",
-      email: "kwansik97@gmail.com",
-      memo: "hello I'm kwansik:)",
-    },
-    {},
-  ]);
-
   return (
     <section className={styles.cardMakerCon}>
       <Header color={"white"}></Header>
@@ -50,8 +54,8 @@ const CardMaker = ({ authService, userData }) => {
             className={styles.greeting}
           >{`${userData.displayName}님 환영합니다.`}</span>
         )}
-        <Maker userInfo={userInfo}></Maker>
-        <Preview userInfo={userInfo.filter((user) => user.name)}></Preview>
+        <Maker users={userInfo}></Maker>
+        <Preview users={userInfo.filter((user) => user.name)}></Preview>
       </div>
     </section>
   );

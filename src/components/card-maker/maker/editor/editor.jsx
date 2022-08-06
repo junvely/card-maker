@@ -2,37 +2,39 @@ import React from "react";
 import styles from "./editor.module.css";
 
 const Editor = ({ user }) => {
+  const { name, company, job, email, message } = user;
+
   return (
-    <section className={styles.editor}>
+    <li className={styles.editor}>
       <form className={styles.editorForm}>
         <input
           type="text"
-          value={user.name}
+          value={name}
           className={styles.name}
           placeholder="Name"
         />
         <input
           type="text"
-          value={user.company}
+          value={company}
           className={styles.company}
           placeholder="Company"
         />
         <input
           type="text"
-          value={user.job}
+          value={job}
           className={styles.job}
           placeholder="Job"
         />
         <input
           type="text"
-          value={user.email}
+          value={email}
           className={styles.email}
           placeholder="E-mail"
         />
         <input
           type="text"
-          value={user.memo}
-          className={styles.memo}
+          value={message}
+          className={styles.message}
           placeholder="Memo"
         />
         <div className={styles.buttons}>
@@ -42,7 +44,7 @@ const Editor = ({ user }) => {
           <button className={styles.delete}>Delete</button>
         </div>
       </form>
-    </section>
+    </li>
   );
 };
 
