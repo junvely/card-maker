@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { useState } from "react";
 import Login from "./components/login/login";
 import styles from "./app.css";
-import CardMaker from "./components/card-maker/card-maker";
+import CardMaker from "./components/business-card-maker/business-card-maker";
 
 function App({ authService }) {
   const [userData, setUserData] = useState(null);

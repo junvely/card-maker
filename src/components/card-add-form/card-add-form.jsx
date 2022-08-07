@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
-import Button from "../../../../button/button";
-import styles from "../editor.module.css";
+import Button from "../button/button";
+import styles from "../card-edit-form/card-edit-form.module.css";
 import ImgFileInput from "../img_file_input/img_file_input";
 
 const AddForm = ({ onAddForm }) => {

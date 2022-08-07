@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "./preview.module.css";
-import Card from "./card/card";
+import styles from "./card-preview.module.css";
+import Card from "../card/card";
 
 const Preview = ({ cards }) => {
   return (

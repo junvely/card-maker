@@ -1,76 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styles from "./card-maker.module.css";
-import Header from "../header/header";
-import { useNavigate } from "react-router-dom";
-import Maker from "./maker/maker";
-import Preview from "./preview/preview";
-import Button from "../button/button";
+import EditForm from "../card-edit-form/card-edit-form";
+import AddForm from "../card-add-form/card-add-form";
 
-const CardMaker = ({ authService, userData }) => {
-  const [cards, setCards] = useState([
-    {
-      id: "1",
-      name: "Lee Jun Young",
-      company: "Junyoung Company",
-      job: "freelancer",
-      email: "junvely97@gmail.com",
-      message: "hello I'm Junyoung:)",
-      fileURL: null,
-      theme: "pink",
-    },
-    {
-      id: "2",
-      name: "Ellie",
-      company: "Samsung Electronicsdfds",
-      job: "Software Engineer",
-      email: "Ellie@gmail.com",
-      message: "hello I'm Ellie:)",
-      fileURL: null,
-      theme: "",
-    },
-  ]);
-
-  const navigate = useNavigate();
-
-  const onLogout = () => {
-    authService.logout();
-  };
-
-  const onAddForm = (info) => {
-    if (!info.name) {
-      alert("name을 입력해주세요.");
-    }
-
-    const newCards = [...cards, info];
-    setCards(newCards);
-  };
-
-  useEffect(() => {
-    authService.onAuthChange((user) => {
-      if (!user) {
-        navigate("/");
-      }
-    });
-  });
-
+const Maker = ({ cards, onAddForm }) => {
   return (
-    <section className={styles.cardMakerCon}>
-      <Header color={"white"}></Header>
-      <Button name={"Logout"} onClick={onLogout}></Button>
-      <div className={styles.sections}>
-        {userData && (
-          <span
-            className={styles.greeting}
-          >{`${userData.displayName}님 환영합니다.`}</span>
-        )}
-        <Maker
-          cards={cards.filter((card) => card.name)}
-          onAddForm={onAddForm}
-        ></Maker>
-        <Preview cards={cards.filter((card) => card.name)}></Preview>
-      </div>
+    <section className={styles.maker}>
+      <h2>Card Maker</h2>
+      <ul className={styles.cards}>
+        {cards.map((card) => (
+          <EditForm card={card} key={card.id}></EditForm>
+        ))}
+        <AddForm onAddForm={onAddForm}></AddForm>
+      </ul>
     </section>
   );
 };
 
-export default CardMaker;
+export default Maker;

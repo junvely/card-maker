@@ -1,9 +1,9 @@
 import React from "react";
-import Button from "../../../button/button";
-import styles from "./editor.module.css";
-import ImgFileInput from "./img_file_input/img_file_input";
+import Button from "../button/button";
+import styles from "./card-edit-form.module.css";
+import ImgFileInput from "../img_file_input/img_file_input";
 
-const Editor = ({ card }) => {
+const EditForm = ({ card }) => {
   const { name, company, job, email, message, theme } = card;
 
   const onSubmit = () => {};
@@ -63,4 +63,4 @@ const Editor = ({ card }) => {
   );
 };
 
-export default Editor;
+export default EditForm;

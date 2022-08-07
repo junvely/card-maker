@@ -1,4 +1,4 @@
-@value makerWhite, makerBlue  from "../../../../../common/colors.css";
+@value makerWhite, makerBlue  from "../../common/colors.css";
 
 .imgFileInput {
   width: 50%;
