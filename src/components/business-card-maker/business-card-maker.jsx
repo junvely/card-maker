@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import Header from "../header/header";
 import Maker from "../card-maker/card-maker";
 import Preview from "../card-preview/card-preview";
-import Button from "../button/button";
 import styles from "./business-card-maker.module.css";
 
 const CardMaker = ({ authService, userData }) => {
@@ -40,7 +39,6 @@ const CardMaker = ({ authService, userData }) => {
     if (!info.name) {
       alert("name을 입력해주세요.");
     }
-
     const newCards = [...cards, info];
     setCards(newCards);
   };
@@ -54,22 +52,23 @@ const CardMaker = ({ authService, userData }) => {
   });
 
   return (
-    <section className={styles.cardMakerCon}>
-      <Header color={"white"}></Header>
-      <Button name={"Logout"} onClick={onLogout}></Button>
-      <div className={styles.sections}>
+    <div className={styles.carMakerBg}>
+      <section className={styles.cardMakerCon}>
+        <Header onLogout={onLogout}></Header>
         {userData && (
           <span
             className={styles.greeting}
-          >{`${userData.displayName}님 환영합니다.`}</span>
+          >{`'${userData.displayName}' 님 환영합니다.`}</span>
         )}
-        <Maker
-          cards={cards.filter((card) => card.name)}
-          onAddForm={onAddForm}
-        ></Maker>
-        <Preview cards={cards.filter((card) => card.name)}></Preview>
-      </div>
-    </section>
+        <div className={styles.sections}>
+          <Maker
+            cards={cards.filter((card) => card.name)}
+            onAddForm={onAddForm}
+          ></Maker>
+          <Preview cards={cards.filter((card) => card.name)}></Preview>
+        </div>
+      </section>
+    </div>
   );
 };
 

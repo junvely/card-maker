@@ -16,8 +16,8 @@ const Login = ({ authService, getUserData }) => {
     authService //
       .login(event.currentTarget.id)
       .then((data) => {
-        getUserData(data.user);
         gotoMaker(data.user.uid);
+        getUserData(data.user);
       });
   };
 

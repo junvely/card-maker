@@ -9,6 +9,8 @@ const AddForm = ({ onAddForm }) => {
   const jobRef = useRef();
   const emailRef = useRef();
   const messageRef = useRef();
+  const themRef = useRef();
+  const formRef = useRef();
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -19,39 +21,39 @@ const AddForm = ({ onAddForm }) => {
       job: jobRef.current.value,
       email: emailRef.current.value,
       message: messageRef.current.value,
+      theme: themRef.current.value,
       fileURL: null,
-      theme: "blue",
     };
     onAddForm(info);
-    resetForm();
-  };
-
-  const resetForm = () => {
-    nameRef.current.value = "";
-    companyRef.current.value = "";
-    jobRef.current.value = "";
-    emailRef.current.value = "";
-    messageRef.current.value = "";
+    formRef.current.reset();
   };
 
   return (
     <li className={styles.editor}>
-      <form className={styles.editorForm} onSubmit={(e) => onSubmit(e)}>
+      <form
+        className={styles.editorForm}
+        ref={formRef}
+        onSubmit={(e) => onSubmit(e)}
+      >
         <input
           ref={nameRef}
-          type="text"
           className={`${styles.name} ${styles.input}`}
+          type="text"
           placeholder="Name"
           required
         />
         <input
           ref={companyRef}
-          type="text"
           className={`${styles.company} ${styles.input}`}
+          type="text"
           placeholder="Company"
           required
         />
-        <select className={`${styles.select} ${styles.input}`} name="theme">
+        <select
+          className={`${styles.select} ${styles.input}`}
+          ref={themRef}
+          name="theme"
+        >
           <option value={"purple"}>Purple</option>
           <option value={"pink"}>Pink</option>
           <option value={"blue"}>Blue</option>
@@ -59,15 +61,15 @@ const AddForm = ({ onAddForm }) => {
         </select>
         <input
           ref={jobRef}
-          type="text"
           className={`${styles.job} ${styles.input}`}
+          type="text"
           placeholder="Job"
           required
         />
         <input
           ref={emailRef}
-          type="text"
           className={`${styles.email} ${styles.input}`}
+          type="text"
           placeholder="E-mail"
           required
         />

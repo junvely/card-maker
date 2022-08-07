@@ -1,13 +1,12 @@
 import React from "react";
+import Button from "../button/button";
 import styles from "./header.module.css";
 
-const Header = ({ color }) => {
-  const colorChange = color === "white" && styles.colorWhite;
-
+const Header = ({ onLogout }) => {
   return (
     <header>
-      <h1 className={`${styles.title} ${colorChange}`}>Business Card Maker</h1>
-      <img className={styles.img} src="./img/logo.png" alt="logo" />
+      <h1 className={`${styles.title}`}>Business Card Maker</h1>
+      {onLogout && <Button name={"Logout"} onClick={onLogout}></Button>}
     </header>
   );
 };

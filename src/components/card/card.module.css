@@ -52,10 +52,10 @@
   transform: translateY(0.5em);
 }
 
-.pink {
+.purple {
   background: makerColorful;
 }
-.purple {
+.pink {
   background: makerColorfulPink;
 }
 .blue {
