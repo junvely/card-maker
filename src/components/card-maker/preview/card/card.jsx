@@ -2,8 +2,8 @@ import React from "react";
 import styles from "./card.module.css";
 
 const DEFAULT_IMAGE = "/img/default_logo.png";
-const Card = ({ user }) => {
-  const { name, company, job, email, message, fileURL, theme } = user;
+const Card = ({ card }) => {
+  const { name, company, job, email, message, fileURL, theme } = card;
   const url = fileURL || DEFAULT_IMAGE;
 
   return (
@@ -33,7 +33,7 @@ function bgChange(theme) {
     case "dark":
       return styles.dark;
     default:
-      throw new Error(`unknown theme: ${theme}`);
+      return styles.purple;
   }
 }
 

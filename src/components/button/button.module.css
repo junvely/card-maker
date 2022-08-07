@@ -6,7 +6,6 @@
   transition: all 0.3s;
   background-color: makerWhite;
 }
-
 .button:hover {
   background-color: makerBlue;
   color: makerWhite;
@@ -20,7 +19,6 @@
   color: makerWhite;
   background-color: makerBlue;
 }
-
 .logout:hover {
   background-color: makerWhite;
   color: makerBlue;
@@ -30,7 +28,13 @@
   width: 50%;
   background-color: #ccc;
 }
-
 .delete:hover {
   background-color: #222;
+}
+
+.add {
+  width: 50%;
+}
+.add:hover {
+  background-color: orange;
 }

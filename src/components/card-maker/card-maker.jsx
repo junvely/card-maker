@@ -7,7 +7,7 @@ import Preview from "./preview/preview";
 import Button from "../button/button";
 
 const CardMaker = ({ authService, userData }) => {
-  const [userInfo, setUserInfo] = useState([
+  const [cards, setCards] = useState([
     {
       id: "1",
       name: "Lee Jun Young",
@@ -20,21 +20,29 @@ const CardMaker = ({ authService, userData }) => {
     },
     {
       id: "2",
-      name: "Son kwan sik",
+      name: "Ellie",
       company: "Samsung Electronicsdfds",
       job: "Software Engineer",
-      email: "kwansik97@gmail.com",
-      message: "hello I'm kwansik:)",
+      email: "Ellie@gmail.com",
+      message: "hello I'm Ellie:)",
       fileURL: null,
-      theme: "blue",
+      theme: "",
     },
-    {},
   ]);
 
   const navigate = useNavigate();
 
   const onLogout = () => {
     authService.logout();
+  };
+
+  const onAddForm = (info) => {
+    if (!info.name) {
+      alert("name을 입력해주세요.");
+    }
+
+    const newCards = [...cards, info];
+    setCards(newCards);
   };
 
   useEffect(() => {
@@ -55,8 +63,11 @@ const CardMaker = ({ authService, userData }) => {
             className={styles.greeting}
           >{`${userData.displayName}님 환영합니다.`}</span>
         )}
-        <Maker users={userInfo}></Maker>
-        <Preview users={userInfo.filter((user) => user.name)}></Preview>
+        <Maker
+          cards={cards.filter((card) => card.name)}
+          onAddForm={onAddForm}
+        ></Maker>
+        <Preview cards={cards.filter((card) => card.name)}></Preview>
       </div>
     </section>
   );

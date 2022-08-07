@@ -3,8 +3,8 @@ import Button from "../../../button/button";
 import styles from "./editor.module.css";
 import ImgFileInput from "./img_file_input/img_file_input";
 
-const Editor = ({ user }) => {
-  const { name, company, job, email, message, theme } = user;
+const Editor = ({ card }) => {
+  const { name, company, job, email, message, theme } = card;
 
   const onSubmit = () => {};
 

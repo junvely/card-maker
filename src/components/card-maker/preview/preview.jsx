@@ -2,13 +2,13 @@ import React from "react";
 import styles from "./preview.module.css";
 import Card from "./card/card";
 
-const Preview = ({ users }) => {
+const Preview = ({ cards }) => {
   return (
     <section className={styles.preview}>
       <h2>Card Preview</h2>
       <ul className={styles.cards}>
-        {users.map((user) => (
-          <Card user={user} key={user.id}></Card>
+        {cards.map((card) => (
+          <Card card={card} key={card.id}></Card>
         ))}
       </ul>
     </section>

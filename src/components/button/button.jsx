@@ -18,8 +18,11 @@ function getButtonStyle(name) {
       return styles.logout;
     case "Delete":
       return styles.delete;
+    case "Add":
+      return styles.add;
     default:
-      throw new Error(`unknown button style ${name}`);
+      console.log(`unknown button style ${name}`);
+      return;
   }
 }
 

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styles from "./login.module.css";
-import Header from "../../common/header/header";
+import Header from "../header/header";
 import { useNavigate } from "react-router-dom";
 
 const Login = ({ authService, getUserData }) => {
