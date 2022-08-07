@@ -12,21 +12,21 @@ const EditForm = ({ card }) => {
     <li className={styles.editor}>
       <form className={styles.editorForm}>
         <input
-          type="text"
-          value={name}
           className={`${styles.name} ${styles.input}`}
+          type="text"
+          defaultValue={name}
           placeholder="Name"
         />
         <input
-          type="text"
-          value={company}
           className={`${styles.company} ${styles.input}`}
+          type="text"
+          defaultValue={company}
           placeholder="Company"
         />
         <select
           className={`${styles.select} ${styles.input}`}
           name="theme"
-          value={theme}
+          defaultValue={theme}
         >
           <option value={"purple"}>Purple</option>
           <option value={"pink"}>Pink</option>
@@ -34,15 +34,15 @@ const EditForm = ({ card }) => {
           <option value={"dark"}>Dark</option>
         </select>
         <input
-          type="text"
-          value={job}
           className={`${styles.job} ${styles.input}`}
+          type="text"
+          defaultValue={job}
           placeholder="Job"
         />
         <input
-          type="text"
-          value={email}
           className={`${styles.email} ${styles.input}`}
+          type="text"
+          defaultValue={email}
           placeholder="E-mail"
         />
         <textarea
