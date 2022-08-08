@@ -6,8 +6,8 @@ import Preview from "../card-preview/card-preview";
 import styles from "./business-card-maker.module.css";
 
 const CardMaker = ({ authService, userData }) => {
-  const [cards, setCards] = useState([
-    {
+  const [cards, setCards] = useState({
+    1: {
       id: "1",
       name: "Lee Jun Young",
       company: "Junyoung Company",
@@ -17,7 +17,7 @@ const CardMaker = ({ authService, userData }) => {
       fileURL: null,
       theme: "pink",
     },
-    {
+    2: {
       id: "2",
       name: "Ellie",
       company: "Samsung Electronicsdfds",
@@ -27,7 +27,7 @@ const CardMaker = ({ authService, userData }) => {
       fileURL: null,
       theme: "",
     },
-  ]);
+  });
 
   const navigate = useNavigate();
 
@@ -35,27 +35,20 @@ const CardMaker = ({ authService, userData }) => {
     authService.logout();
   };
 
-  const onAddForm = (card) => {
-    if (!card.name) {
-      alert("name을 입력해주세요.");
-    }
-    const newCards = [...cards, card];
-    setCards(newCards);
-  };
-
-  const updateCard = (newCard) => {
-    const updatedCard = cards.map((card) => {
-      if (card.id === newCard.id) {
-        return { ...newCard };
-      }
-      return card;
+  const addOrUpdateCard = (card) => {
+    setCards((cards) => {
+      const updatedCard = { ...cards };
+      updatedCard[card.id] = card; // 기존 key가 object에 없을경우 추가됨
+      return updatedCard;
     });
-    setCards(updatedCard);
   };
 
-  const deleteCard = (id) => {
-    const deletedCards = cards.filter((card) => card.id !== id);
-    setCards(deletedCards);
+  const deleteCard = (card) => {
+    setCards((cards) => {
+      const updatedCard = { ...cards };
+      delete updatedCard[card.id];
+      return updatedCard;
+    });
   };
 
   useEffect(() => {
@@ -77,12 +70,11 @@ const CardMaker = ({ authService, userData }) => {
         )}
         <div className={styles.sections}>
           <Maker
-            cards={cards.filter((card) => card.name)}
-            onAddForm={onAddForm}
-            updateCard={updateCard}
+            cards={cards}
+            addOrUpdateCard={addOrUpdateCard}
             deleteCard={deleteCard}
           ></Maker>
-          <Preview cards={cards.filter((card) => card.name)}></Preview>
+          <Preview cards={cards}></Preview>
         </div>
       </section>
     </div>

@@ -1,26 +1,23 @@
-import React, { useRef } from "react";
 import Button from "../button/button";
 import styles from "./card-edit-form.module.css";
 import ImgFileInput from "../img_file_input/img_file_input";
 
-const EditForm = ({ card, updateCard, deleteCard }) => {
+const EditForm = ({ card, addOrUpdateCard, deleteCard }) => {
   const { id, name, company, job, email, message, theme } = card;
-  const nameRef = useRef();
-  const companyRef = useRef();
-  const jobRef = useRef();
-  const emailRef = useRef();
-  const messageRef = useRef();
-  const themRef = useRef();
 
   const onChange = (e) => {
     if (e.currentTarget == null) {
       return;
     }
     e.preventDefault();
-    updateCard({
+    addOrUpdateCard({
       ...card,
       [e.currentTarget.name]: e.currentTarget.value,
     });
+  };
+
+  const onSubmit = () => {
+    deleteCard(card);
   };
 
   return (
@@ -28,7 +25,7 @@ const EditForm = ({ card, updateCard, deleteCard }) => {
       <form className={styles.editorForm}>
         <input
           className={`${styles.name} ${styles.input}`}
-          ref={nameRef}
+          name="name"
           type="text"
           defaultValue={name}
           placeholder="Name"
@@ -36,7 +33,7 @@ const EditForm = ({ card, updateCard, deleteCard }) => {
         />
         <input
           className={`${styles.company} ${styles.input}`}
-          ref={companyRef}
+          name="company"
           type="text"
           defaultValue={company}
           placeholder="Company"
@@ -44,7 +41,6 @@ const EditForm = ({ card, updateCard, deleteCard }) => {
         />
         <select
           className={`${styles.select} ${styles.input}`}
-          ref={themRef}
           name="theme"
           defaultValue={theme}
           onChange={onChange}
@@ -56,7 +52,7 @@ const EditForm = ({ card, updateCard, deleteCard }) => {
         </select>
         <input
           className={`${styles.job} ${styles.input}`}
-          ref={jobRef}
+          name="job"
           type="text"
           defaultValue={job}
           placeholder="Job"
@@ -64,7 +60,7 @@ const EditForm = ({ card, updateCard, deleteCard }) => {
         />
         <input
           className={`${styles.email} ${styles.input}`}
-          ref={emailRef}
+          name="email"
           type="text"
           defaultValue={email}
           placeholder="E-mail"
@@ -72,7 +68,6 @@ const EditForm = ({ card, updateCard, deleteCard }) => {
         />
         <textarea
           className={`${styles.message} ${styles.input}`}
-          ref={messageRef}
           name="message"
           defaultValue={message}
           placeholder="Memo"
@@ -83,7 +78,7 @@ const EditForm = ({ card, updateCard, deleteCard }) => {
             name={name ? name : "No file"}
             onclick={onclick}
           ></ImgFileInput>
-          <Button name={"Delete"} onClick={() => deleteCard(id)}></Button>
+          <Button name={"Delete"} onClick={onSubmit}></Button>
         </div>
       </form>
     </li>

@@ -3,7 +3,7 @@ import Button from "../button/button";
 import styles from "../card-edit-form/card-edit-form.module.css";
 import ImgFileInput from "../img_file_input/img_file_input";
 
-const AddForm = ({ onAddForm }) => {
+const AddForm = ({ addOrUpdateCard }) => {
   const nameRef = useRef();
   const companyRef = useRef();
   const jobRef = useRef();
@@ -24,7 +24,7 @@ const AddForm = ({ onAddForm }) => {
       theme: themRef.current.value,
       fileURL: null,
     };
-    onAddForm(card);
+    addOrUpdateCard(card);
     formRef.current.reset();
   };
 
