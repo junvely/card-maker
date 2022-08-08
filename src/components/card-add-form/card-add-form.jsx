@@ -81,7 +81,7 @@ const AddForm = ({ onAddForm }) => {
         />
         <div className={styles.buttons}>
           <ImgFileInput name={"No file"} onclick={onclick}></ImgFileInput>
-          <Button name={"Add"} onClick={(e) => onSubmit(e)}></Button>
+          <Button name={"Add"}></Button>
         </div>
       </form>
     </li>

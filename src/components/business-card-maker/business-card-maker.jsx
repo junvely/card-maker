@@ -48,6 +48,18 @@ const CardMaker = ({ authService, userData }) => {
     setCards(deletedCards);
   };
 
+  const onChange = (changedCard) => {
+    // const changeCard = cards.filter((card) => card.id === info.id);
+    const changedCards = cards.map((card) => {
+      if (card.id === changedCard.id) {
+        return { ...changedCard };
+      }
+      return card;
+    });
+    setCards(changedCards);
+  };
+  console.log(cards);
+
   useEffect(() => {
     authService.onAuthChange((user) => {
       if (!user) {
@@ -70,6 +82,7 @@ const CardMaker = ({ authService, userData }) => {
             cards={cards.filter((card) => card.name)}
             onAddForm={onAddForm}
             onDelete={onDelete}
+            onChange={onChange}
           ></Maker>
           <Preview cards={cards.filter((card) => card.name)}></Preview>
         </div>
