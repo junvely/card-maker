@@ -14,7 +14,7 @@ const AddForm = ({ onAddForm }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const info = {
+    const card = {
       id: Date.now(),
       name: nameRef.current.value,
       company: companyRef.current.value,
@@ -24,7 +24,7 @@ const AddForm = ({ onAddForm }) => {
       theme: themRef.current.value,
       fileURL: null,
     };
-    onAddForm(info);
+    onAddForm(card);
     formRef.current.reset();
   };
 

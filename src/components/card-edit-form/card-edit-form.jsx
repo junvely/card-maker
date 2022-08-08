@@ -3,7 +3,7 @@ import Button from "../button/button";
 import styles from "./card-edit-form.module.css";
 import ImgFileInput from "../img_file_input/img_file_input";
 
-const EditForm = ({ card, onDelete, onChange }) => {
+const EditForm = ({ card, updateCard, deleteCard }) => {
   const { id, name, company, job, email, message, theme } = card;
   const nameRef = useRef();
   const companyRef = useRef();
@@ -12,17 +12,15 @@ const EditForm = ({ card, onDelete, onChange }) => {
   const messageRef = useRef();
   const themRef = useRef();
 
-  const onChangeInput = () => {
-    const changedCard = {
-      id: id,
-      name: nameRef.current.value,
-      company: companyRef.current.value,
-      job: jobRef.current.value,
-      email: emailRef.current.value,
-      message: messageRef.current.value,
-      theme: themRef.current.value,
-    };
-    onChange(changedCard);
+  const onChange = (e) => {
+    if (e.currentTarget == null) {
+      return;
+    }
+    e.preventDefault();
+    updateCard({
+      ...card,
+      [e.currentTarget.name]: e.currentTarget.value,
+    });
   };
 
   return (
@@ -34,7 +32,7 @@ const EditForm = ({ card, onDelete, onChange }) => {
           type="text"
           defaultValue={name}
           placeholder="Name"
-          onChange={onChangeInput}
+          onChange={onChange}
         />
         <input
           className={`${styles.company} ${styles.input}`}
@@ -42,14 +40,14 @@ const EditForm = ({ card, onDelete, onChange }) => {
           type="text"
           defaultValue={company}
           placeholder="Company"
-          onChange={onChangeInput}
+          onChange={onChange}
         />
         <select
           className={`${styles.select} ${styles.input}`}
           ref={themRef}
           name="theme"
           defaultValue={theme}
-          onChange={onChangeInput}
+          onChange={onChange}
         >
           <option value={"purple"}>Purple</option>
           <option value={"pink"}>Pink</option>
@@ -62,7 +60,7 @@ const EditForm = ({ card, onDelete, onChange }) => {
           type="text"
           defaultValue={job}
           placeholder="Job"
-          onChange={onChangeInput}
+          onChange={onChange}
         />
         <input
           className={`${styles.email} ${styles.input}`}
@@ -70,7 +68,7 @@ const EditForm = ({ card, onDelete, onChange }) => {
           type="text"
           defaultValue={email}
           placeholder="E-mail"
-          onChange={onChangeInput}
+          onChange={onChange}
         />
         <textarea
           className={`${styles.message} ${styles.input}`}
@@ -78,14 +76,14 @@ const EditForm = ({ card, onDelete, onChange }) => {
           name="message"
           defaultValue={message}
           placeholder="Memo"
-          onChange={onChangeInput}
+          onChange={onChange}
         />
         <div className={styles.buttons}>
           <ImgFileInput
             name={name ? name : "No file"}
             onclick={onclick}
           ></ImgFileInput>
-          <Button name={"Delete"} onClick={() => onDelete(id)}></Button>
+          <Button name={"Delete"} onClick={() => deleteCard(id)}></Button>
         </div>
       </form>
     </li>

@@ -35,30 +35,28 @@ const CardMaker = ({ authService, userData }) => {
     authService.logout();
   };
 
-  const onAddForm = (info) => {
-    if (!info.name) {
+  const onAddForm = (card) => {
+    if (!card.name) {
       alert("name을 입력해주세요.");
     }
-    const newCards = [...cards, info];
+    const newCards = [...cards, card];
     setCards(newCards);
   };
 
-  const onDelete = (id) => {
-    const deletedCards = cards.filter((card) => card.id !== id);
-    setCards(deletedCards);
-  };
-
-  const onChange = (changedCard) => {
-    // const changeCard = cards.filter((card) => card.id === info.id);
-    const changedCards = cards.map((card) => {
-      if (card.id === changedCard.id) {
-        return { ...changedCard };
+  const updateCard = (newCard) => {
+    const updatedCard = cards.map((card) => {
+      if (card.id === newCard.id) {
+        return { ...newCard };
       }
       return card;
     });
-    setCards(changedCards);
+    setCards(updatedCard);
   };
-  console.log(cards);
+
+  const deleteCard = (id) => {
+    const deletedCards = cards.filter((card) => card.id !== id);
+    setCards(deletedCards);
+  };
 
   useEffect(() => {
     authService.onAuthChange((user) => {
@@ -81,8 +79,8 @@ const CardMaker = ({ authService, userData }) => {
           <Maker
             cards={cards.filter((card) => card.name)}
             onAddForm={onAddForm}
-            onDelete={onDelete}
-            onChange={onChange}
+            updateCard={updateCard}
+            deleteCard={deleteCard}
           ></Maker>
           <Preview cards={cards.filter((card) => card.name)}></Preview>
         </div>
