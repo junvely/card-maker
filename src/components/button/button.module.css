@@ -1,4 +1,4 @@
-@value makerWhite, makerBlue  from "../../common/colors.css";
+@value makerWhite, makerBlue, makerColorful  from "../../common/colors.css";
 
 .button {
   padding: 0.5em 0.7em;
@@ -7,7 +7,7 @@
   background-color: makerWhite;
 }
 .button:hover {
-  background-color: makerBlue;
+  background: makerBlue;
   color: makerWhite;
 }
 
@@ -34,7 +34,6 @@
 
 .add {
   width: 50%;
-}
-.add:hover {
-  background-color: orange;
+  background: makerColorful;
+  color: makerWhite;
 }

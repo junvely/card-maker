@@ -3,10 +3,8 @@ import Button from "../button/button";
 import styles from "./card-edit-form.module.css";
 import ImgFileInput from "../img_file_input/img_file_input";
 
-const EditForm = ({ card }) => {
-  const { name, company, job, email, message, theme } = card;
-
-  const onSubmit = () => {};
+const EditForm = ({ card, onDelete }) => {
+  const { id, name, company, job, email, message, theme } = card;
 
   return (
     <li className={styles.editor}>
@@ -48,7 +46,7 @@ const EditForm = ({ card }) => {
         <textarea
           className={`${styles.message} ${styles.input}`}
           name="message"
-          value={message}
+          defaultValue={message}
           placeholder="Memo"
         />
         <div className={styles.buttons}>
@@ -56,7 +54,7 @@ const EditForm = ({ card }) => {
             name={name ? name : "No file"}
             onclick={onclick}
           ></ImgFileInput>
-          <Button name={"Delete"} onclick={onSubmit}></Button>
+          <Button name={"Delete"} onClick={() => onDelete(id)}></Button>
         </div>
       </form>
     </li>
