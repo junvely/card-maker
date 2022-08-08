@@ -2,15 +2,15 @@ import Button from "../button/button";
 import styles from "./card-edit-form.module.css";
 import ImgFileInput from "../img_file_input/img_file_input";
 
-const EditForm = ({ card, addOrUpdateCard, deleteCard }) => {
-  const { id, name, company, job, email, message, theme } = card;
+const EditForm = ({ card, updateCard, deleteCard }) => {
+  const { name, company, job, email, message, theme } = card;
 
   const onChange = (e) => {
     if (e.currentTarget == null) {
       return;
     }
     e.preventDefault();
-    addOrUpdateCard({
+    updateCard({
       ...card,
       [e.currentTarget.name]: e.currentTarget.value,
     });

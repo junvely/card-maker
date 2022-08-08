@@ -12,11 +12,11 @@ const Maker = ({ cards, addOrUpdateCard, deleteCard }) => {
           <EditForm
             card={cards[key]}
             key={key}
-            addOrUpdateCard={addOrUpdateCard}
+            updateCard={addOrUpdateCard}
             deleteCard={deleteCard}
           ></EditForm>
         ))}
-        <AddForm addOrUpdateCard={addOrUpdateCard}></AddForm>
+        <AddForm addCard={addOrUpdateCard}></AddForm>
       </ul>
     </section>
   );
