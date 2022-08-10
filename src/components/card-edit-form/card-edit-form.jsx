@@ -1,8 +1,7 @@
 import Button from "../button/button";
 import styles from "./card-edit-form.module.css";
-import ImgFileInput from "../img_file_input/img_file_input";
 
-const EditForm = ({ card, updateCard, deleteCard }) => {
+const EditForm = ({ FileInput, card, updateCard, deleteCard }) => {
   const { name, company, job, email, message, theme } = card;
 
   const onChange = (e) => {
@@ -74,10 +73,10 @@ const EditForm = ({ card, updateCard, deleteCard }) => {
           onChange={onChange}
         />
         <div className={styles.buttons}>
-          <ImgFileInput
+          <FileInput
             name={name ? name : "No file"}
-            onclick={onclick}
-          ></ImgFileInput>
+            onClick={onclick}
+          ></FileInput>
           <Button name={"Delete"} onClick={onSubmit}></Button>
         </div>
       </form>

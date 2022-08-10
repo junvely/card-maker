@@ -1,9 +1,8 @@
 import React, { useRef } from "react";
 import Button from "../button/button";
 import styles from "../card-edit-form/card-edit-form.module.css";
-import ImgFileInput from "../img_file_input/img_file_input";
 
-const AddForm = ({ addCard }) => {
+const AddForm = ({ FileInput, addCard }) => {
   const nameRef = useRef();
   const companyRef = useRef();
   const jobRef = useRef();
@@ -80,7 +79,7 @@ const AddForm = ({ addCard }) => {
           placeholder="Message"
         />
         <div className={styles.buttons}>
-          <ImgFileInput name={"No file"} onclick={onclick}></ImgFileInput>
+          <FileInput name={"No file"} onclick={onclick}></FileInput>
           <Button name={"Add"}></Button>
         </div>
       </form>

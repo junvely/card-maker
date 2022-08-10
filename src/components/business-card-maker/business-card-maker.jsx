@@ -5,7 +5,7 @@ import Maker from "../card-maker/card-maker";
 import Preview from "../card-preview/card-preview";
 import styles from "./business-card-maker.module.css";
 
-const CardMaker = ({ authService, userData }) => {
+const CardMaker = ({ FileInput, authService, userData }) => {
   const [cards, setCards] = useState({
     1: {
       id: "1",
@@ -70,6 +70,7 @@ const CardMaker = ({ authService, userData }) => {
         )}
         <div className={styles.sections}>
           <Maker
+            FileInput={FileInput}
             cards={cards}
             addOrUpdateCard={addOrUpdateCard}
             deleteCard={deleteCard}

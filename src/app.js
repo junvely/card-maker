@@ -4,7 +4,7 @@ import Login from "./components/login/login";
 import styles from "./app.css";
 import CardMaker from "./components/business-card-maker/business-card-maker";
 
-function App({ authService }) {
+function App({ FileInput, authService }) {
   const [userData, setUserData] = useState(null);
 
   const getUserData = (data) => {
@@ -22,7 +22,13 @@ function App({ authService }) {
         />
         <Route
           path="/card-maker"
-          element={<CardMaker authService={authService} userData={userData} />}
+          element={
+            <CardMaker
+              FileInput={FileInput}
+              authService={authService}
+              userData={userData}
+            />
+          }
         />
       </Routes>
     </div>
