@@ -12,9 +12,9 @@ import ImgFileInput from "./components/img_file_input/img_file_input";
 const authService = new AuthService(firebaseApp);
 const imageUploader = new ImageUploader();
 const FileInput = (
-  // props으로 컴포넌트를 전달할 때 = 대문자로 시작
-  props // 컴포넌트 > 다른 컴포넌트에 컴포넌트 자체를 전달
-) => <ImgFileInput {...props} imageUploader={imageUploader} />;
+  //  컴포넌트를 props으로 전달할 때 = 대문자로 시작
+  props // FileInput컴포넌트에서 props을 전달하여 > imageFileInput에게 props과 ImageUploader 객체생성 props으로 전달
+) => <ImgFileInput {...props} imageUploader={imageUploader} />; // FileInput컴포넌트에서 {...props}로 전달하는 이유 > 추후 확장성, 테스트성 등
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

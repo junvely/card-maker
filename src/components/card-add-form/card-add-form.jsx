@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Button from "../button/button";
 import styles from "../card-edit-form/card-edit-form.module.css";
 
@@ -11,6 +11,16 @@ const AddForm = ({ FileInput, addCard }) => {
   const themRef = useRef();
   const formRef = useRef();
 
+  const [file, setFile] = useState({ fileName: null, fileURL: null });
+
+  const onFileChange = (file) => {
+    console.log(file);
+    setFile({
+      fileName: file.name,
+      fileURL: file.url,
+    });
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
     const card = {
@@ -21,10 +31,12 @@ const AddForm = ({ FileInput, addCard }) => {
       email: emailRef.current.value,
       message: messageRef.current.value,
       theme: themRef.current.value,
-      fileURL: null,
+      fileName: file.fileName || "",
+      fileURL: file.fileURL || "",
     };
-    addCard(card);
     formRef.current.reset();
+    console.log(card);
+    addCard(card);
   };
 
   return (
@@ -79,7 +91,7 @@ const AddForm = ({ FileInput, addCard }) => {
           placeholder="Message"
         />
         <div className={styles.buttons}>
-          <FileInput name={"No file"} onclick={onclick}></FileInput>
+          <FileInput name={file.fileName} onclick={onclick}></FileInput>
           <Button name={"Add"}></Button>
         </div>
       </form>

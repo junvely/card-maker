@@ -26,7 +26,7 @@
 }
 
 .select {
-  flex: 1 1 20%;
+  /* flex: 1 1 20%; */
 }
 
 .message {
@@ -36,5 +36,8 @@
 }
 
 .buttons {
-  flex: 1 1 30%;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  /* flex: 1 1 30%; */
 }

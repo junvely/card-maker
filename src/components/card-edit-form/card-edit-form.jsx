@@ -15,6 +15,14 @@ const EditForm = ({ FileInput, card, updateCard, deleteCard }) => {
     });
   };
 
+  const onFileChange = (file) => {
+    updateCard({
+      ...card,
+      fileName: file.name,
+      fileURL: file.url,
+    });
+  };
+
   const onSubmit = () => {
     deleteCard(card);
   };
@@ -74,8 +82,8 @@ const EditForm = ({ FileInput, card, updateCard, deleteCard }) => {
         />
         <div className={styles.buttons}>
           <FileInput
-            name={name ? name : "No file"}
-            onClick={onclick}
+            name={name || "No file"}
+            onFileChange={onFileChange}
           ></FileInput>
           <Button name={"Delete"} onClick={onSubmit}></Button>
         </div>
