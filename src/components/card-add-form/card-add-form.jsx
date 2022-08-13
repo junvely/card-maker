@@ -91,7 +91,11 @@ const AddForm = ({ FileInput, addCard }) => {
           placeholder="Message"
         />
         <div className={styles.buttons}>
-          <FileInput name={file.fileName} onclick={onclick}></FileInput>
+          <FileInput
+            name={file.fileName}
+            onFileChange={onFileChange}
+            onClick={onFileChange}
+          ></FileInput>
           <Button name={"Add"}></Button>
         </div>
       </form>

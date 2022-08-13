@@ -1,7 +1,10 @@
-@value makerWhite, makerBlue, makerLightGrey  from "../../common/colors.css";
+@value makerWhite, makerBlack, makerBlue, makerLightGrey, makerPink  from "../../common/colors.css";
 
 .container {
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .input {
@@ -12,11 +15,34 @@
   width: 100%;
   padding: 0.5em 0.7em;
   transition: all 0.3s;
-  background-color: makerWhite;
+  background-color: makerBlue;
+  color: makerBlack;
   cursor: pointer;
 }
 
 .button:hover {
-  background-color: makerBlue;
   color: makerWhite;
+}
+
+.loading {
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  border: 3px solid makerLightGrey;
+  border-top: 3px solid makerBlue;
+  animation: spin 2s linear infinite;
+}
+
+.button.uploaded {
+  background-color: makerWhite;
+  color: makerBlack;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

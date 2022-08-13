@@ -2,7 +2,7 @@ import Button from "../button/button";
 import styles from "./card-edit-form.module.css";
 
 const EditForm = ({ FileInput, card, updateCard, deleteCard }) => {
-  const { name, company, job, email, message, theme } = card;
+  const { name, company, job, email, message, theme, fileName } = card;
 
   const onChange = (e) => {
     if (e.currentTarget == null) {
@@ -82,7 +82,7 @@ const EditForm = ({ FileInput, card, updateCard, deleteCard }) => {
         />
         <div className={styles.buttons}>
           <FileInput
-            name={name || "No file"}
+            name={fileName || "No file"}
             onFileChange={onFileChange}
           ></FileInput>
           <Button name={"Delete"} onClick={onSubmit}></Button>
