@@ -3,12 +3,12 @@ import styles from "./login.module.css";
 import Header from "../header/header";
 import { useNavigate } from "react-router-dom";
 
-const Login = ({ authService, getUserData }) => {
+const Login = ({ authService }) => {
   const navigate = useNavigate();
-  const gotoMaker = (userId) => {
+  const gotoMaker = (user) => {
     navigate({
-      pathname: "/card-maker",
-      state: { id: userId },
+      pathname: "/business-card-maker",
+      state: { user: user },
     });
   };
 
@@ -16,8 +16,7 @@ const Login = ({ authService, getUserData }) => {
     authService //
       .login(event.currentTarget.id)
       .then((data) => {
-        gotoMaker(data.user.uid);
-        getUserData(data.user);
+        gotoMaker(data.user);
       });
   };
 

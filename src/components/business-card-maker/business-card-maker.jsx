@@ -1,33 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Header from "../header/header";
 import Maker from "../card-maker/card-maker";
 import Preview from "../card-preview/card-preview";
 import styles from "./business-card-maker.module.css";
 
-const CardMaker = ({ FileInput, authService, userData }) => {
-  const [cards, setCards] = useState({
-    1: {
-      id: "1",
-      name: "Lee Jun Young",
-      company: "Junyoung Company",
-      job: "freelancer",
-      email: "junvely97@gmail.com",
-      message: "hello I'm Junyoung:)",
-      fileURL: null,
-      theme: "pink",
-    },
-    2: {
-      id: "2",
-      name: "Ellie",
-      company: "Samsung Electronicsdfds",
-      job: "Software Engineer",
-      email: "Ellie@gmail.com",
-      message: "hello I'm Ellie:)",
-      fileURL: null,
-      theme: "",
-    },
-  });
+const CardMaker = ({ FileInput, authService, cardRepository }) => {
+  const navigateState = useLocation.state;
+  const [cards, setCards] = useState({});
+  const [userData, setUserData] = useState(navigateState && navigateState.user);
 
   const navigate = useNavigate();
 
@@ -38,9 +19,10 @@ const CardMaker = ({ FileInput, authService, userData }) => {
   const addOrUpdateCard = (card) => {
     setCards((cards) => {
       const updatedCard = { ...cards };
-      updatedCard[card.id] = card; // 기존 key가 object에 없을경우 추가됨
+      updatedCard[card.id] = card;
       return updatedCard;
     });
+    cardRepository.saveCard(userData, card);
   };
 
   const deleteCard = (card) => {
@@ -49,11 +31,14 @@ const CardMaker = ({ FileInput, authService, userData }) => {
       delete updatedCard[card.id];
       return updatedCard;
     });
+    cardRepository.removeCard(userData, card);
   };
 
   useEffect(() => {
     authService.onAuthChange((user) => {
-      if (!user) {
+      if (user) {
+        setUserData(user);
+      } else {
         navigate("/");
       }
     });
