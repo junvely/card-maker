@@ -34,6 +34,22 @@ const CardMaker = ({ FileInput, authService, cardRepository }) => {
     cardRepository.removeCard(userData, card);
   };
 
+  // useEffect의 장점 : 해당하는 로직별로 여러개만들 수 있음
+  useEffect(() => {
+    if (!userData) {
+      return; // userData가 없을경우엔 return하여 함수를 끝냄
+    }
+    const stopSync = cardRepository.syncCards(userData, (cards) => {
+      // 있을 경우 userData와 콜백자체를 인자로 보내면서 호출
+      setCards(cards);
+    });
+
+    return () => {
+      // userEffect에서 return 시 = 컴포넌트가 언마운트 되었을 때 호출 > 불필요한 네트워크 사용을 끔
+      stopSync(); // sync를 멈춤
+    };
+  }, [userData]); // userData가 변경될 때마다 호출
+
   useEffect(() => {
     authService.onAuthChange((user) => {
       if (user) {
