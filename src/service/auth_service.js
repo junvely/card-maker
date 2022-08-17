@@ -14,6 +14,7 @@ class AuthService {
     this.githubProvider = new GithubAuthProvider();
     this.faceBookProvider = new FacebookAuthProvider();
   }
+
   login(providerName) {
     const authProvider = this.getProvider(providerName);
     return signInWithPopup(this.firebaseAuth, authProvider);
@@ -38,7 +39,7 @@ class AuthService {
       case "faceBook":
         return this.faceBookProvider;
       default:
-        throw new Error(`not supported provider`);
+        throw new Error(`not supported provider ${providerName}`);
     }
   }
 }

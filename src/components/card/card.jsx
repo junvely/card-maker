@@ -9,7 +9,7 @@ const Card = ({ card }) => {
   return (
     <li className={`${styles.card} ${bgChange(theme)}`}>
       <div className={styles.userImgCon}>
-        <img src={url} alt="userImg" />
+        <img src={url} alt="user profile" />
       </div>
       <div className={styles.userInfo}>
         <h3 className={styles.name}>{name}</h3>

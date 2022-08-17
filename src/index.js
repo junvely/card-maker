@@ -11,7 +11,7 @@ import ImageUploader from "./service/image_uploader";
 import ImgFileInput from "./components/img_file_input/img_file_input";
 
 const authService = new AuthService(firebaseApp);
-const cardRepository = new CardRepository();
+const cardRepository = new CardRepository(firebaseApp); //firebaseApp 전달 > props으로 이용해야하는 경우
 const imageUploader = new ImageUploader();
 const FileInput = (
   //  컴포넌트를 props으로 전달할 때 = 대문자로 시작

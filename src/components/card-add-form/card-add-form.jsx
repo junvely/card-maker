@@ -35,7 +35,6 @@ const AddForm = ({ FileInput, addCard }) => {
       fileURL: file.fileURL || "",
     };
     formRef.current.reset();
-    console.log(card);
     addCard(card);
   };
 
