@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Header from "../header/header";
 import Maker from "../card-maker/card-maker";
@@ -12,9 +12,9 @@ const CardMaker = ({ FileInput, authService, cardRepository }) => {
 
   const navigate = useNavigate();
 
-  const onLogout = () => {
+  const onLogout = useCallback(() => {
     authService.logout();
-  };
+  }, [authService]);
 
   const addOrUpdateCard = (card) => {
     setCards((cards) => {

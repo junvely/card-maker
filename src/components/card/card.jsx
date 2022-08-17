@@ -1,9 +1,8 @@
-import React from "react";
+import React, { memo } from "react";
 import styles from "./card.module.css";
 
 const DEFAULT_IMAGE = "/img/default_logo.png";
-const Card = ({ card }) => {
-  const { name, company, job, email, message, fileURL, theme } = card;
+const Card = memo(({ name, company, job, email, message, fileURL, theme }) => {
   const url = fileURL || DEFAULT_IMAGE;
 
   return (
@@ -20,7 +19,7 @@ const Card = ({ card }) => {
       </div>
     </li>
   );
-};
+});
 
 function bgChange(theme) {
   switch (theme) {

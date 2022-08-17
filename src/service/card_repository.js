@@ -21,8 +21,7 @@ class CardRepository {
   }
 
   removeCard(userData, card) {
-    const deleteRef = ref(this.db, `${userData.uid}/cards/${card.id}`);
-    remove(deleteRef);
+    remove(ref(this.db, `${userData.uid}/cards/${card.id}`));
   }
 }
 

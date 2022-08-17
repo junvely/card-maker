@@ -1,16 +1,13 @@
-import React from "react";
+import React, { memo } from "react";
 import styles from "./button.module.css";
 
-const Button = ({ name, onClick }) => {
+const Button = memo(({ name }) => {
   return (
-    <button
-      className={`${styles.button} ${getButtonStyle(name)}`}
-      onClick={onClick}
-    >
+    <button className={`${styles.button} ${getButtonStyle(name)}`}>
       {name}
     </button>
   );
-};
+});
 
 function getButtonStyle(name) {
   switch (name) {

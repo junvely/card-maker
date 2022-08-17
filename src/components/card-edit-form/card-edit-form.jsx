@@ -23,13 +23,14 @@ const EditForm = ({ FileInput, card, updateCard, deleteCard }) => {
     });
   };
 
-  const onSubmit = () => {
+  const onSubmit = (e) => {
+    e.preventDefault();
     deleteCard(card);
   };
 
   return (
     <li className={styles.editor}>
-      <form className={styles.editorForm}>
+      <form className={styles.editorForm} onSubmit={onSubmit}>
         <input
           className={`${styles.name} ${styles.input}`}
           name="name"
@@ -85,7 +86,7 @@ const EditForm = ({ FileInput, card, updateCard, deleteCard }) => {
             name={fileName || "No file"}
             onFileChange={onFileChange}
           ></FileInput>
-          <Button name={"Delete"} onClick={onSubmit}></Button>
+          <Button name={"Delete"}></Button>
         </div>
       </form>
     </li>
