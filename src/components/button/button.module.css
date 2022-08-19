@@ -13,8 +13,8 @@
 
 .logout {
   position: absolute;
-  top: 0;
-  right: 1rem;
+  top: 1.5em;
+  right: 1em;
   border-radius: 30px;
   color: makerWhite;
   background-color: makerBlue;

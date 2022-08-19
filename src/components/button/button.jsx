@@ -1,9 +1,12 @@
 import React, { memo } from "react";
 import styles from "./button.module.css";
 
-const Button = memo(({ name }) => {
+const Button = memo(({ name, onClick }) => {
   return (
-    <button className={`${styles.button} ${getButtonStyle(name)}`}>
+    <button
+      className={`${styles.button} ${getButtonStyle(name)}`}
+      onClick={onClick}
+    >
       {name}
     </button>
   );
